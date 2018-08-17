@@ -1,0 +1,37 @@
+apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao'
+android {
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId "com.example.jiaenfeng.greendaodemo"
+        minSdkVersion 15
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:26.+'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation 'junit:junit:4.12'
+    implementation'org.greenrobot:greendao:3.2.2'
+    implementation'org.greenrobot:greendao-generator:3.0.0'
+    implementation 'com.github.yuweiguocn:GreenDaoUpgradeHelper:v1.4.0'
+}
+greendao {
+    //数据库schema版本号
+    schemaVersion 3
+    //dao的包名，包名默认是entity所在的包
+    daoPackage 'com.anye.greendao.gen'
+    //生成数据库文件的目录;
+    targetGenDir 'src/main/java'
+}
